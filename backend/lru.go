@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"sync"
+	"time"
+)
 
 type CacheItem struct {
 	Value      string
@@ -8,6 +11,7 @@ type CacheItem struct {
 }
 
 type LRUCache struct {
+	sync.Mutex
 	capacity int
 	items    map[string]CacheItem
 	keys     []string
@@ -24,6 +28,8 @@ func NewLRUCache(capacity int) *LRUCache {
 }
 
 func (c *LRUCache) Get(key string) (string, bool) {
+	c.Lock()
+	defer c.Unlock()
 	if item, ok := c.items[key]; ok {
 		if time.Now().After(item.Expiration) {
 			delete(c.items, key)
@@ -37,6 +43,8 @@ func (c *LRUCache) Get(key string) (string, bool) {
 }
 
 func (c *LRUCache) Set(key, value string, expiration time.Duration) {
+	c.Lock()
+	defer c.Unlock()
 	if _, ok := c.items[key]; ok {
 		c.moveToFront(key)
 	} else {
