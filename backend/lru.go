@@ -43,7 +43,7 @@ func (c *LRUCache) Set(key, value string, expiration time.Duration) {
 		if len(c.items) >= c.capacity {
 			oldest := c.keys[len(c.keys)-1]
 			delete(c.items, oldest)
-			c.removeKey(oldest)
+			c.keys = c.keys[:len(c.keys)-1]
 		}
 		c.keys = append([]string{key}, c.keys...)
 	}

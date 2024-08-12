@@ -2,14 +2,14 @@ goos: darwin
 goarch: amd64
 pkg: lru
 cpu: VirtualApple @ 2.50GHz
-BenchmarkLRUCache/Size_100_Ops_1000-8         	    1401	    873422 ns/op	 2017548 B/op	    2230 allocs/op
-BenchmarkLRUCache/Size_100_Ops_10000-8        	     134	   8614873 ns/op	18459489 B/op	   20408 allocs/op
-BenchmarkLRUCache/Size_100_Ops_100000-8       	      12	  87917517 ns/op	183141619 B/op	  202454 allocs/op
-BenchmarkLRUCache/Size_1000_Ops_1000-8        	     124	   9207077 ns/op	32736433 B/op	    4002 allocs/op
-BenchmarkLRUCache/Size_1000_Ops_10000-8       	      18	  72428917 ns/op	178079608 B/op	   21783 allocs/op
-BenchmarkLRUCache/Size_1000_Ops_100000-8      	       2	 629342125 ns/op	1644907044 B/op	  201257 allocs/op
-BenchmarkLRUCache/Size_10000_Ops_1000-8       	     122	   9836900 ns/op	32731791 B/op	    4002 allocs/op
-BenchmarkLRUCache/Size_10000_Ops_10000-8      	       2	 710099354 ns/op	986987132 B/op	   20157 allocs/op
-BenchmarkLRUCache/Size_10000_Ops_100000-8     	       1	8073190375 ns/op	15585178648 B/op	  201827 allocs/op
+BenchmarkLRUCache/Size_100_Ops_1000-8         	    4202	    297523 ns/op	  977681 B/op	    1081 allocs/op
+BenchmarkLRUCache/Size_100_Ops_10000-8        	     354	   3393776 ns/op	 9238374 B/op	   10212 allocs/op
+BenchmarkLRUCache/Size_100_Ops_100000-8       	      32	  32300876 ns/op	91051788 B/op	  100648 allocs/op
+BenchmarkLRUCache/Size_1000_Ops_1000-8        	     616	   1689934 ns/op	 5838363 B/op	    1423 allocs/op
+BenchmarkLRUCache/Size_1000_Ops_10000-8       	      52	  26220256 ns/op	89609431 B/op	   10952 allocs/op
+BenchmarkLRUCache/Size_1000_Ops_100000-8      	       5	 217291158 ns/op	822391108 B/op	  100529 allocs/op
+BenchmarkLRUCache/Size_10000_Ops_1000-8       	     670	   1770662 ns/op	 5999653 B/op	    1462 allocs/op
+BenchmarkLRUCache/Size_10000_Ops_10000-8      	      14	 220967943 ns/op	324831356 B/op	   10215 allocs/op
+BenchmarkLRUCache/Size_10000_Ops_100000-8     	       1	3302391667 ns/op	7399942936 B/op	  101696 allocs/op
 PASS
-ok  	lru	23.645s
+ok  	lru	17.425s

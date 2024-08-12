@@ -27,10 +27,12 @@ func BenchmarkLRUCache(b *testing.B) {
 		for _, count := range operationCounts {
 			b.Run(fmt.Sprintf("Size_%d_Ops_%d", size, count), func(b *testing.B) {
 				cache := NewLRUCache(size)
+				operation := make([]bool, count)
 				keys := make([]string, count)
 				values := make([]string, count)
 
 				for i := 0; i < count; i++ {
+					operation[i] = rand.Int()%2 == 0
 					keys[i] = randomString(10)
 					values[i] = randomString(20)
 				}
@@ -40,12 +42,11 @@ func BenchmarkLRUCache(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					// Benchmark Set operations
 					for j := 0; j < count; j++ {
-						cache.Set(keys[j], values[j], 10*time.Millisecond)
-					}
-
-					// Benchmark Get operations
-					for j := 0; j < count; j++ {
-						cache.Get(keys[rand.Intn(count)])
+						if operation[j] {
+							cache.Set(keys[j], values[j], 10*time.Millisecond)
+						} else {
+							cache.Get(keys[rand.Intn(count)])
+						}
 					}
 				}
 			})
